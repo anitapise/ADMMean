@@ -4,18 +4,18 @@
             <label for="email">Username</label>
             <input type="email" 
             id="email" 
-            class="form-control" formControlName="email">
+            class="form-control" formControlName="email" placeholder="enter your email">
         </div>
          <div class="form-group">
             <label for="password">Password</label>
             <input type="password" 
             id="password" 
-            class="form-control" formControlName="password">
+            class="form-control" formControlName="password" placeholder="Must be 8 character long">
         </div>
          <div class="form-group">
          <button class="btn btn-primary" 
          type="submit" [disabled]="!myForm.valid"> Login </button>
-         <button class="btn btn-primary">Register</button>
+         <button class="btn btn-primary" (click)="onRegister()">Register</button>
           </div>
     </form>
 </div>

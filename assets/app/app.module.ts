@@ -14,8 +14,7 @@ import { AuthService } from "./auth/auth.service";
         AuthenticationComponent,
         SigninComponent,
         SignupComponent
-
-    ],
+   ],
     imports: [BrowserModule,
     FormsModule,
     routing,
@@ -24,7 +23,6 @@ import { AuthService } from "./auth/auth.service";
     providers:[AuthService],
     bootstrap: [AppComponent]
     
-
 })
 export class AppModule {
 

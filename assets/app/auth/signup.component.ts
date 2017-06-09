@@ -1,6 +1,7 @@
 import { Component,OnInit } from "@angular/core";
 import { FormGroup,FormControl,Validators } from "@angular/forms";
 import { AuthService } from "./auth.service";
+import { Router } from "@angular/router";
 import { User } from "./user.model";
 @Component({
 selector:'app-signup',
@@ -8,7 +9,7 @@ templateUrl:'./signup.component.html'
 })
 export class SignupComponent implements OnInit{
     myForm : FormGroup;
-    constructor (private authService: AuthService) {}
+    constructor (private authService: AuthService,private router: Router) {}
     onSubmit()
     {
         //creating new user and saves it in to database
@@ -24,6 +25,9 @@ export class SignupComponent implements OnInit{
        );
        //sending mail to new user
         this.myForm.reset();
+    }
+    onCancel(){
+        this.router.navigate(['/']);
     }
 ngOnInit()
 {
