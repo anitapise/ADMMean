@@ -29,6 +29,7 @@ app.use(function (req, res, next) {
 
 app.use('/', appRoutes);
 app.use('/user', userRoutes);
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     return res.render('index');

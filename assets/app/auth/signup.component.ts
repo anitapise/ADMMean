@@ -23,7 +23,7 @@ export class SignupComponent implements OnInit{
            data => console.log(data),
            error => console.log(error)
        );
-       //sending mail to new user
+       
         this.myForm.reset();
     }
     onCancel(){
