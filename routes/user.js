@@ -46,12 +46,12 @@ transporter.sendMail(mail, function(error, response){
         console.log(error);
     }else{
         console.log("Message sent: " + user._id);
-        console.log(link);
+
     }
     transporter.close();
 });
 });
-router.get('/signin/:id?',function(req,res){
+router.get('/signin/:id',function(req,res){
 console.log(req.protocol+"://"+req.get('host'));
 if((req.protocol+"://"+req.get('host'))==("http://"+host))
 {

@@ -7,6 +7,8 @@ import { AuthenticationComponent } from "./auth/authentication.component";
 import { SigninComponent } from "./auth/signin.component";
 import { SignupComponent } from "./auth/signup.component";
 //import { VerifyComponent } from "./auth/verify.component";
+import { ContactComponent } from "./contacts/contact.component";
+import { HeaderComponent } from "./contacts/header.component";
 import { HttpModule } from "@angular/http";
 import { AuthService } from "./auth/auth.service";
 @NgModule({
@@ -14,7 +16,9 @@ import { AuthService } from "./auth/auth.service";
         AppComponent,
         AuthenticationComponent,
         SigninComponent,
-        SignupComponent
+        SignupComponent,
+        ContactComponent,
+        HeaderComponent
         //VerifyComponent
    ],
     imports: [BrowserModule,
