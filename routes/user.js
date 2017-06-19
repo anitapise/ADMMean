@@ -18,7 +18,7 @@ router.post('/', function(req, res, next) {
         name: req.body.name,
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password,10),
-        isactive: req.body.isactive
+        isActive: req.body.isActive
     });
     user.save(function(err,result){
         if (err){
@@ -33,14 +33,14 @@ router.post('/', function(req, res, next) {
         });
     });
 host=req.get('host');
-link="http://"+req.get('host')+"/auth/signin/"+user._id;
+link="http://"+req.get('host')+"/verify_email/"+user._id;
 var mail = {
     from: "mailer@ambersoft.in",
     to: user.email,
     subject: "Verify your Email account",
-    html: "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>"
+    html: "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+" >Click here to verify</a>"
 }
-
+console.log(link);
 transporter.sendMail(mail, function(error, response){
     if(error){
         console.log(error);
@@ -51,8 +51,7 @@ transporter.sendMail(mail, function(error, response){
     transporter.close();
 });
 });
-router.get('/signin/:id',function(req,res){
-console.log(req.protocol+"://"+req.get('host'));
+/*
 if((req.protocol+"://"+req.get('host'))==("http://"+host))
 {
     console.log("Domain is matched. Information is from Authentic email");
@@ -71,7 +70,7 @@ else
 {
     res.end("<h1>Request is from unknown source");
 }
-});
+});*/
 
 router.post('/signin', function(req, res, next) {
     User.findOne({email: req.body.email}, function(err, user) {

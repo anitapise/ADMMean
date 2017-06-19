@@ -3,7 +3,6 @@ import { FormGroup,FormControl,Validators } from "@angular/forms";
 import { AuthService } from "./auth.service";
 import { Router } from "@angular/router";
 import { User } from "./user.model";
-
 @Component({
 selector:'app-signin',
 templateUrl:'./signin.component.html'
@@ -20,7 +19,7 @@ myForm : FormGroup;
                     localStorage.setItem('token', data.token);
                     localStorage.setItem('userId', data.userId);
                     console.log(data);
-                    this.router.navigateByUrl('/');
+                    this.router.navigateByUrl('/contacts');
                 },
                 error => console.error(error)
             );
