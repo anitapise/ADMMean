@@ -1,0 +1,26 @@
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top ">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" (click)="toggleState()">
+                <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="#page-top">ADM - Powerful Email Marketing Tool </a>
+        </div>
+        <div class="collapse navbar-collapse" [ngClass]="{ 'in': isIn }" >
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="page-scroll" (click) ="clickScroll()" href="/auth/signin#about_us">About us</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="/auth/signin#features">Features</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="/auth/signin#products">Our Products</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="/auth/signin#contact">Contact us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

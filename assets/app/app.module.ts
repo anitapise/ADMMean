@@ -11,11 +11,13 @@ import { ContactComponent } from "./contacts/contact.component";
 import { HeaderComponent } from "./contacts/header.component";
 import { HttpModule } from "@angular/http";
 import { AuthService } from "./auth/auth.service";
+import { NavbarComponent } from "./navbar/navbar.component";
 @NgModule({
     declarations: [
         AppComponent,
         AuthenticationComponent,
         SigninComponent,
+        NavbarComponent,
         SignupComponent,
         ContactComponent,
         HeaderComponent
@@ -27,7 +29,7 @@ import { AuthService } from "./auth/auth.service";
     HttpModule,routing],
     providers:[AuthService],
     bootstrap: [AppComponent]
-    
+
 })
 export class AppModule {
 
