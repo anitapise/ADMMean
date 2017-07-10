@@ -6,12 +6,13 @@ import { routing  } from "./app.routing";
 import { AuthenticationComponent } from "./auth/authentication.component";
 import { SigninComponent } from "./auth/signin.component";
 import { SignupComponent } from "./auth/signup.component";
-//import { VerifyComponent } from "./auth/verify.component";
+import { FileSelectDirective } from "ng2-file-upload";
 import { ContactComponent } from "./contacts/contact.component";
 import { HeaderComponent } from "./contacts/header.component";
 import { HttpModule } from "@angular/http";
 import { AuthService } from "./auth/auth.service";
 import { NavbarComponent } from "./navbar/navbar.component";
+import { ContactService } from "./contacts/contact.service";
 @NgModule({
     declarations: [
         AppComponent,
@@ -20,14 +21,14 @@ import { NavbarComponent } from "./navbar/navbar.component";
         NavbarComponent,
         SignupComponent,
         ContactComponent,
-        HeaderComponent
-        //VerifyComponent
-   ],
+        HeaderComponent,
+        FileSelectDirective
+        ],
     imports: [BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,routing],
-    providers:[AuthService],
+    providers:[AuthService,ContactService],
     bootstrap: [AppComponent]
 
 })

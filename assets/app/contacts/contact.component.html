@@ -1,12 +1,248 @@
 <div class="container">
     <app-header></app-header>
-     <div class="col-md-12">
-         
+    <div class="col-md-12">
         <div class="col-md-2">
-            <button class="btn btn-primary btn-style" type="button">Add Contact</button>
+            <!-- Trigger the addmodal with a button -->
+            <button type="button"  class="btn btn-primary btn-style" data-toggle="modal" data-target="#addModal">Add Contact</button>
         </div>
         <div class="col-md-3">
             <input type="text" class="form-control" placeholder="Search here"/>
         </div>
-  <router-outlet></router-outlet>
- </div>
+        <div class="col-md-2">
+            <div class="col-md-5 no-padding">
+                Records :
+            </div>
+            <div class="col-md-7 no-padding">
+                <select class="form-control">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Display Contact Data -->
+<div class="col-md-12 no-gutter top-buffer">
+    <div class="panel panel-info col-md-12 no-gutter">
+        <div class="panel-heading col-md-12 bold-font">
+            <div class="col-md-1 panel-head-menu">
+                Sr. No.
+            </div>
+            <div class="col-md-2 panel-head-menu">
+                Name
+            </div>
+            <div class="col-md-3 panel-head-menu">
+                Email
+            </div>
+            <div class="col-md-4 panel-head-menu">
+                <div class="col-md-4">
+                    Phone
+                </div>
+                <div class="col-md-4">
+                    Location
+                </div>
+                <div class="col-md-4">
+                    Total Experince 
+                </div>
+            </div>
+            <div class="col-md-1 panel-head-menu">
+            </div>
+        </div>
+        <div class="panel-body col-md-12" *ngFor="let contact of contacts; let i= index">
+            <div class="col-md-1">
+                {{i+1}}
+            </div>
+            <div class="col-md-2">
+                {{contact.name}}
+            </div>
+            <div class="col-md-3">
+                {{contact.email}}
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-4">
+                    {{contact.phone}}
+                </div>
+                <div class="col-md-4">
+                    {{contact.current_location}}
+                </div>
+                <div class="col-md-4">
+                    {{contact.total_experience}}
+                </div>
+            </div>
+            <div class="col-md-2 anchored-element">
+                <a><span class="glyphicon glyphicon-pencil"></span></a>
+                <a><span class="glyphicon glyphicon-remove" style="padding-left:30px;" (click)="deleteContact(contact._id)"></span></a>
+                <a><span class="glyphicon glyphicon-eye-open" style="padding-left:30px;"></span></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Display Contact Data -->
+    <!-- addModal starts -->
+<div id="addModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <span class="modal-title">Add Contact</span>
+            </div>
+            <form class="form-horizontal" [formGroup]="contactForm" (ngSubmit)="addContact(f)" #f="ngForm">
+                <div class="modal-body row                                                                                                                                                          modal-body-overflow">
+                    <div class="col-md-6">
+                        <input type="radio" name="addopt" value="single" (click)="addoneContact()" checked> Add Single Contact
+                    </div>
+                    <div class="col-md-6">
+                        <input type="radio" name="addopt" value="multiple" (click)="addmultipleContact()"> Upload Excel File
+                    </div>
+                    <br>
+                    <div [hidden]="Multiple" class="top-buffer">
+                        <div class="form-group col-md-12">
+                            <div class="col-md-3">
+                                <label for="name">Name</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" id="name" class="form-control" formControlName="name" placeholder="enter name">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="col-md-3">
+                                <label for="email">Email</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="email" id="email" class="form-control" formControlName="email" placeholder="enter email">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="col-md-3">
+                                <label for="phone">Phone</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" id="phone" class="form-control" formControlName="phone" placeholder="enter phone no">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="col-md-3">
+                                <label for="current_location">Location </label>
+                            </div>
+                            <div class="col-md-9">
+                                <select id="current_location" class="form-control" formControlName="current_location">
+                                    <option value="Pune">Pune</option>
+                                    <option value="Mumbai">Mumbai</option>
+                                    <option value="Chennai">Chennai</option>
+                                    <option value="Kolkata">Kolkata</option>
+                                    <option value="Hyderabad">Hyderabad</option>
+                                    <option value="Bangalore">Bangalore</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="col-md-3">
+                                <label for="total_experience">Total Experience</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" id="total_experience" class="form-control" formControlName="total_experience" placeholder="enter total experience">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="col-md-3">
+                                <label for="current_organization">Current Organization</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" id="current_organization" class="form-control" formControlName="current_organization" placeholder="enter current organization">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="col-md-3">
+                                <label for="job_role">Job Role</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" id="job_role" class="form-control" formControlName="job_role" placeholder="enter job role">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="col-md-3">
+                                <label for="gender">Gender</label>
+                            </div>
+                            <div class="col-md-9">
+                                <select id="gender" class="form-control" formControlName="gender">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="col-md-3">
+                                <label for="social_profile_link">Social Profile Link</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="url" id="social_profile_link" class="form-control" formControlName="social_profile_link">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="col-md-3">
+                                <label for="dateofbirth">Date Of Birth</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="date" id="dateofbirth" class="form-control" formControlName="dateofbirth">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="col-md-3">
+                                <label for="resume_upload">Upload File</label>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                    <div class="input-append">
+                                        <div class="fileinput fileinput-new input-group col-md-3" data-provides="fileinput">
+                                            <div class="form-control" data-trigger="fileinput">
+                                                <i class="glyphicon glyphicon-file fileinput-exists"></i>
+                                                <span class="fileinput-filename"></span>
+                                            </div>
+                                            <span class="input-group-addon btn btn-default btn-file">
+                                                <span class="fileinput-new">Select file</span>
+                                                <span class="fileinput-exists">Change</span>
+                                                <input type="file" id="resume_upload" formControlName="resume_upload" ng2FileSelect [uploader]="uploader"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div [hidden]="!Multiple">
+                        <div class="form-group col-md-12 top-buffer">
+                            <div class="col-md-3">
+                                <label for="bulk_contacts">Upload Contacts</label>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                    <div class="input-append" style='width: 100%;'>
+                                        <div class="fileinput fileinput-new input-group col-md-3" data-provides="fileinput">
+                                            <div class="form-control" data-trigger="fileinput">
+                                                <i class="glyphicon glyphicon-file fileinput-exists"></i>
+                                                <span class="fileinput-filename"></span>
+                                            </div>
+                                            <span class="input-group-addon btn btn-default btn-file">
+                                                <span class="fileinput-new">Select file</span>
+                                                <span class="fileinput-exists">Change</span>
+                                                <input type="file" id="bulk_contacts"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+</div>
+    <router-outlet></router-outlet>
+</div>

@@ -51,26 +51,6 @@ transporter.sendMail(mail, function(error, response){
     transporter.close();
 });
 });
-/*
-if((req.protocol+"://"+req.get('host'))==("http://"+host))
-{
-    console.log("Domain is matched. Information is from Authentic email");
-    if(req.query._id==user._id)
-    {
-        console.log("email is verified");
-        res.end("<h1>Email is been Successfully verified");
-    }
-    else
-    {
-        console.log("email is not verified");
-        res.end("<h1>Bad Request</h1>");
-    }
-}
-else
-{
-    res.end("<h1>Request is from unknown source");
-}
-});*/
 
 router.post('/signin', function(req, res, next) {
     User.findOne({email: req.body.email}, function(err, user) {

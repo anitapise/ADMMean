@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var appRoutes = require('./routes/app');
 var userRoutes = require('./routes/user');
+var contactRoutes = require('./routes/contact');
 mongoose.connect('localhost:27017/ADM_Mean');
 var app = express();
 // view engine setup
@@ -29,6 +30,7 @@ app.use(function (req, res, next) {
 
 app.use('/', appRoutes);
 app.use('/user', userRoutes);
+app.use('/cont_app', contactRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -327,3 +327,31 @@ img::-moz-selection {
   background: transparent;
 }
 /*Tushar CSS End*/
+.btn-style{
+    box-shadow: 0 5px 5px #ccc;
+    transition: 1s;
+}
+.mod-btn{text-align: center;}
+.mod-btnShadow{
+    box-shadow: 0 3px 5px #333;
+    background-color: #8ec542;
+    width: 150px;
+}
+.mod-style{
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+}
+.no-gutter{
+    padding-left:0;
+    padding-right:0;
+}
+.panel-head-menu{font-size: 17px;}
+.panel-head{border-bottom: 1px groove #f1f1f1;}
+.bold-font{font-weight: bold;}
+.no-padding{padding: 0;}
+.top-buffer { margin-top:20px; }
+.modal-body-overflow{
+    height: 450px;
+    overflow-y: auto;
+}

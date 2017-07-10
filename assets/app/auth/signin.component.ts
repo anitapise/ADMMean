@@ -18,14 +18,11 @@ myForm : FormGroup;
                 data => {
                     localStorage.setItem('token', data.token);
                     localStorage.setItem('userId', data.userId);
-                    console.log(data);
-                    this.router.navigateByUrl('/contacts');
+                    this.router.navigateByUrl('/contact');
                 },
                 error => console.error(error)
             );
-
-        
-        this.myForm.reset();
+             this.myForm.reset();
     }
     onRegister(){
         this.router.navigate(['/auth/signup']);
